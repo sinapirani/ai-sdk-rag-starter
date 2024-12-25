@@ -1,7 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2d3748 #1a202c;
+}
+
+
+/* For Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #1a202c;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #2d3748;
+  border-radius: 10px;
+  border: 2px solid #1a202c;
+}
+
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -73,4 +96,18 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/* add the code bellow */ 
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+ /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
 }
