@@ -3,14 +3,11 @@
 import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { useToast } from '@/hooks/use-toast'
 import { Textarea } from '@/components/ui/textarea'
 
 export default function ResourceCreator() {
   const [text, setText] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const { toast } = useToast()
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -27,20 +24,11 @@ export default function ResourceCreator() {
       const data = await response.json()
 
       if (response.ok) {
-        toast({
-          title: "اضافه شد",
-          description: data.message,
-        })
         setText('') // Clear the input after successful submission
       } else {
         throw new Error(data.error || 'خطایی رخ داد')
       }
     } catch (error: any) {
-      toast({
-        title: "خطا",
-        description: error.message,
-        variant: "destructive",
-      })
     } finally {
       setIsLoading(false)
     }
