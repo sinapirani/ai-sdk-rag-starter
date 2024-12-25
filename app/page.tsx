@@ -25,7 +25,8 @@ export default function Chat() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     setIsTyping(true);
-    handleSubmit(e).finally(() => setIsTyping(false));
+    handleSubmit(e)
+    setIsTyping(false)
   };
 
   return (
